@@ -32,9 +32,6 @@ class App
         $this->loadMagentoFile();
 
         Mage::app(null, 'website', array('config_model' => 'Magento\Codeception\Extension\Magento\Config'));
-        Mage::getSingleton("core/session", array("name" => "frontend"));
-        Mage::app()->setCurrentStore(\Mage_Core_Model_App::DISTRO_STORE_ID);
-        Mage::app()->loadArea(\Mage_Core_Model_App_Area::AREA_FRONTEND);
 
         return $this;
     }
@@ -44,11 +41,11 @@ class App
         $baseDir = getcwd();
         $mageDir = $this->_config[self::CONFIG_MAGENTO_DIR];
         $file = self::MAGENTO_FILE;
-        
+
         $file = "{$baseDir}/{$mageDir}/{$file}";
 
         require_once $file;
-        
+
         return $this;
     }
 
