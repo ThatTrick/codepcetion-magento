@@ -47,6 +47,15 @@ class Magento extends \Codeception\Module
         return $this;
     }
 
+    public function loadControllerClass($module, $controller)
+    {
+        // @codingStandardsIgnoreStart
+        require_once \Mage::getModuleDir('controllers', $module) . DS . $controller;
+        // @codingStandardsIgnoreEnd
+
+        return $this;
+    }
+
     protected function getMocker()
     {
         if (!$this->mocker) {
